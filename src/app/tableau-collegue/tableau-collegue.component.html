@@ -1,0 +1,31 @@
+<!--
+   {{collegues | json}} -->
+<table class="table table-striped">
+    <thead>
+      <tr>
+        <th></th><!--image-->
+        <th>Pseudo</th>
+        <th>Score</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let col of collegues">
+          
+        <td><img [src]="col.url" alt="Photo de ..." width="60" height="30"></td>
+        <td>{{col.pseudo}}</td>
+        <td>{{col.score}}</td>
+        <td>
+          <button type="button" class="btn btn-outline-primary" (click)="jaime(col)">J'aime</button>
+          <button type="button" class="btn btn-outline-danger" (click)="jeDeteste(col)">Je déteste</button>
+
+          </td>
+
+        </tr>
+ 
+    </tbody>
+  </table>
+
+
+  
+    
