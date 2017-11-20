@@ -10,7 +10,9 @@ import { TableauCollegueComponent } from './tableau-collegue/tableau-collegue.co
 import { ListCollegueComponent } from './list-collegue/list-collegue.component';
 import {HttpClientModule} from '@angular/common/http';
 import {CollegueService} from './shared/service/collegue.service';
-import { CarrouselComponent } from './carrousel/carrousel.component'
+import { CarrouselComponent } from './carrousel/carrousel.component';
+import { ScorePipe } from './shared/pipe/score.pipe';
+import { NomPipe } from './shared/filtre/nom.pipe'
 
 
 const appRoutes: Routes = [
@@ -29,7 +31,9 @@ const appRoutes: Routes = [
     UnCollegueComponent,
     TableauCollegueComponent,
     ListCollegueComponent,
-    CarrouselComponent
+    CarrouselComponent,
+    ScorePipe,
+    NomPipe
   ],
   
   imports: [

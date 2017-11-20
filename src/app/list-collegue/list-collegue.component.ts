@@ -10,6 +10,9 @@ import { CollegueService } from '../shared/service/collegue.service';
 export class ListCollegueComponent implements OnInit {
 
   collegues:Collegue[]
+  limite:number=1
+  listfiltree:Collegue[]
+  caract:string
   //@Input() collegueService:CollegueService
 
   constructor(private collegueService: CollegueService) {
@@ -18,7 +21,21 @@ export class ListCollegueComponent implements OnInit {
   }
 
   ngOnInit() {
+    //this.collegues = []
     this.collegueService.listerCollegues().then((tab) => this.collegues = tab)
+    this.caract = ""
+    this.limite = 4
+  }
+  onKeyUp($event){
+    if($event.target.value == ""){
+        this.limite = this.collegues.length
+    }
+    else{
+          this.limite = $event.target.value
+        }
+      }
+  onKeyUpFilter($event){
+   this.caract =  $event.target.value
   }
 
 }

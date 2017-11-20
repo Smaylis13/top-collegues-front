@@ -1,8 +1,22 @@
+<br>
+<div class="input-group mb-2 mb-sm-0">
+  
+<div class="input-group-addon">Limite</div>
+<input type="number" class="form-control"  (keyup)="onKeyUp($event)">
+</div>
+
+<br>
+
+<div class="input-group mb-2 mb-sm-0">
+  
+<div class="input-group-addon">Filtrer par nom : </div>
+<input type="text" class="form-control" placeholder="Nom..." (keyup)="onKeyUpFilter($event)">
+</div>
+
 <div class="container-fluid">
   <div class="row">
 
-    <app-un-collegue *ngFor="let col of collegues" [collegue]="col" ></app-un-collegue>
-
+    <app-un-collegue *ngFor="let col of (collegues|slice:0:limite)|nomPipe:caract" [collegue]="col" ></app-un-collegue>
 
   </div>
 </div>

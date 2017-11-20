@@ -26,5 +26,5 @@ export class CarrouselComponent implements OnInit {
     this.collegueService.detesterUnCollegue(pCollegue).then(col => {
       pCollegue.score = col.score
     })
-
+  }
 }

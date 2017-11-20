@@ -1,6 +1,7 @@
 import { Component, OnInit, Input } from '@angular/core';
 import {Collegue} from '../shared/domain/collegue'
 import {CollegueService} from '../shared/service/collegue.service'
+import {ScorePipe} from '../shared/pipe/score.pipe'
 @Component({
   selector: 'app-un-collegue',
   templateUrl: './un-collegue.component.html',

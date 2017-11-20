@@ -6,8 +6,8 @@
         <img align="center" class="rounded-circle" style="border:5px solid black;" [src]="collegue.url" alt="Photo de "   height="100">
       </div>  
     <div class="card-block">
-        <h4 class="card-title">{{collegue.pseudo}}</h4>
-        <h4 class="card-title">{{collegue.score}}</h4>
+        <h4 class="card-title"> {{collegue.nom | uppercase }}</h4>
+        <h4 class="card-title" [innerHTML]="collegue.score | scorePipe"></h4>
         
         
         <button type="button" class="btn btn-outline-primary" (click)="jaime()">J'aime</button>
