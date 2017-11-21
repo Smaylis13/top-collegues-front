@@ -16,8 +16,8 @@
         <td>{{col.pseudo}}</td>
         <td>{{col.score}}</td>
         <td>
-          <button type="button" class="btn btn-outline-primary" (click)="jaime(col)">J'aime</button>
-          <button type="button" class="btn btn-outline-danger" (click)="jeDeteste(col)">Je déteste</button>
+          <button type="button" class="btn btn-outline-primary" (click)="jaime(col)" [disabled]="etat">J'aime</button>
+          <button type="button" class="btn btn-outline-danger" (click)="jeDeteste(col)" [disabled]="etat">Je déteste</button>
 
           </td>
 

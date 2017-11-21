@@ -2,6 +2,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import {Collegue} from '../shared/domain/collegue'
 import {CollegueService} from '../shared/service/collegue.service'
 import {ScorePipe} from '../shared/pipe/score.pipe'
+import {StateService} from '../shared/status-server/state.service'
 @Component({
   selector: 'app-un-collegue',
   templateUrl: './un-collegue.component.html',
@@ -9,8 +10,12 @@ import {ScorePipe} from '../shared/pipe/score.pipe'
 })
 export class UnCollegueComponent implements OnInit {
 
+  etat:boolean;
+
   @Input() collegue:Collegue;
-  constructor(private collegueService:CollegueService) {
+  constructor(private collegueService:CollegueService,private statusService:StateService) {
+    this.statusService.state().subscribe(val => this.etat = val)
+    
   }
 
   ngOnInit() {

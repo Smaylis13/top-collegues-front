@@ -22,7 +22,7 @@ export class ListCollegueComponent implements OnInit {
 
   ngOnInit() {
     //this.collegues = []
-    this.collegueService.listerCollegues().then((tab) => this.collegues = tab)
+    this.collegueService.listerCollegues().subscribe((tab) => this.collegues = tab)
     this.caract = ""
     this.limite = 4
   }

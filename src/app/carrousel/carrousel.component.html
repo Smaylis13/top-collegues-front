@@ -6,8 +6,8 @@
             <h1 style="font-size:100px">{{col.score}}</h1>  
           
                   
-        <button type="button" class="btn btn-primary" (click)="jaime(col)">J'aime</button>
-        <button type="button" class="btn btn-danger" (click)="jeDeteste(col)">Je déteste</button>
+        <button type="button" class="btn btn-primary" (click)="jaime(col)" [disabled]="etat">J'aime</button>
+        <button type="button" class="btn btn-danger" (click)="jeDeteste(col)" [disabled]="etat">Je déteste</button>
         </div>
       </ng-template>
     </ngb-carousel>

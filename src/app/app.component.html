@@ -1,10 +1,15 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="background-color: gainsboro">
+    <div style="text-align:right">
+        <button *ngIf="etat" >En ligne</button>
+        <button *ngIf="!etat" >Hors ligne</button>
+      </div>
 <div style="text-align:center">
   <h1>
     Top Collègues
   </h1>
 </div>
+
 <h2>Les meilleurs Collègues du moment </h2>
 
 
@@ -18,7 +23,7 @@
     <input type="text" class="form-control"  placeholder="URL Image"#imageUrl>
   </div>
 
-  <button (click)="add(pseudo,imageUrl,toastSuccess)" class="btn btn-primary">Ajouter un nouveau collègue</button>
+  <button (click)="add(pseudo,imageUrl,toastSuccess)" class="btn btn-primary" [disabled]="!etat">Ajouter un nouveau collègue</button> {{etat}}
   <div style="visibility:hidden" class="alert" #toastSuccess>
   </div>
 

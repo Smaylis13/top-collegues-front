@@ -1,6 +1,7 @@
 import { Component, OnInit , Input} from '@angular/core';
 import {Collegue} from '../../app/shared/domain/collegue'
 import {CollegueService} from '../../app/shared/service/collegue.service'
+import {StateService} from '../shared/status-server/state.service'
 @Component({
   selector: 'app-tableau-collegue',
   templateUrl: './tableau-collegue.component.html',
@@ -9,14 +10,14 @@ import {CollegueService} from '../../app/shared/service/collegue.service'
 export class TableauCollegueComponent implements OnInit {
 
   collegues:Array<Collegue>
+  etat:boolean
   
-  
-  constructor(public collegueService:CollegueService) { }
+  constructor(public collegueService:CollegueService, private statusService:StateService) { }
 
   ngOnInit() {
     
-    this.collegueService.listerCollegues().then((tab)=>{this.collegues=tab})
-    //console.log(this.collegues)
+    this.collegueService.listerCollegues().subscribe((tab)=>{this.collegues=tab})
+    this.statusService.state().subscribe(val => this.etat = val)
     
   }
 

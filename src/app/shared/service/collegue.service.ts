@@ -3,7 +3,7 @@ import { Collegue } from '../domain/collegue';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Input } from '@angular/core/src/metadata/directives';
 import {environment} from '../../../environments/environment'
-
+import { Subject, BehaviorSubject,Observable } from 'rxjs';
 const httpOptions = {
   headers: new HttpHeaders({ 'Content-Type': 'application/json' })
 };
@@ -13,20 +13,34 @@ const url_server = environment.apiUrl + "/collegues"
 @Injectable()
 export class CollegueService {
 
-   //collegues:Array<Collegue>
+  subject:Subject<Collegue[]> = new BehaviorSubject([])
+    
+   collegues:Collegue[] = []
     constructor(private http: HttpClient) {
    }
-    listerCollegues():Promise<Collegue[]> {
-
-    return  this.http.get<any>(`${url_server}`).toPromise().then(cols => {
+    listerCollegues():Observable<Collegue[]> {
+      this.http.get<any>(`${url_server}`).toPromise().then(cols => {
+        this.collegues = []
+        return cols.map(col => this.collegues.push(new Collegue(col.pseudo, col.url, col.score))
+        )})
+        this.subject.next(this.collegues)
+      return this.subject.asObservable();
+      
+    /*return  this.http.get<any>(`${url_server}`).toPromise().then(cols => {
       return cols.map(col => new Collegue(col.pseudo, col.url, col.score))
-    })
+    })*/
 
     }
-    sauvegarder(newCollegue:Collegue):Promise<Collegue> {
+    sauvegarder(newCollegue:Collegue):Observable<Collegue[]> {
     // TODO sauvegarder le nouveau collègue
+   
+
       let data = {"pseudo":newCollegue.nom,"url":newCollegue.url}
-      return this.http.post<Collegue>(`${url_server}/ajouter`,data,httpOptions).toPromise()
+      this.http.post<Collegue>(`${url_server}/ajouter`,data,httpOptions)
+      //this.collegues.push(newCollegue)
+      this.subject.next(this.collegues)
+      return this.subject.asObservable();
+      //return this.http.post<Collegue>(`${url_server}/ajouter`,data,httpOptions).toPromise()
 
   }
     aimerUnCollegue(collegue:Collegue):Promise<Collegue> {
@@ -40,3 +54,4 @@ export class CollegueService {
       .toPromise()
    }
 }
+

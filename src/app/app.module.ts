@@ -13,6 +13,7 @@ import {CollegueService} from './shared/service/collegue.service';
 import { CarrouselComponent } from './carrousel/carrousel.component';
 import { ScorePipe } from './shared/pipe/score.pipe';
 import { NomPipe } from './shared/filtre/nom.pipe'
+import {StateService} from './shared/status-server/state.service';
 
 
 const appRoutes: Routes = [
@@ -43,7 +44,7 @@ const appRoutes: Routes = [
     HttpClientModule
     // other imports here
   ],
-  providers: [CollegueService],
+  providers: [CollegueService,StateService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
