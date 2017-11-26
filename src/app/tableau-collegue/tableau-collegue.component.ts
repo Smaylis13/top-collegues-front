@@ -22,7 +22,6 @@ export class TableauCollegueComponent implements OnInit {
   }
 
   jaime(pCollegue:Collegue){
-    console.log(pCollegue)
     this.collegueService.aimerUnCollegue(pCollegue).then(col => {
       pCollegue.score = col.score
     })

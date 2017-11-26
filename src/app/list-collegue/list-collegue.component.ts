@@ -13,19 +13,19 @@ export class ListCollegueComponent implements OnInit {
   limite:number=1
   listfiltree:Collegue[]
   caract:string
-  //@Input() collegueService:CollegueService
-
-  constructor(private collegueService: CollegueService) {
-    //this.collegues=collegue
-  
+  constructor(private collegueService: CollegueService) {  
   }
 
   ngOnInit() {
-    //this.collegues = []
-    this.collegueService.listerCollegues().subscribe((tab) => this.collegues = tab)
+     
+    this.collegueService.listerCollegues().subscribe((tab) =>  this.collegues = tab)
     this.caract = ""
     this.limite = 4
   }
+  /**
+   * change combien de personnes on veut voir 
+   * @param  number
+   */
   onKeyUp($event){
     if($event.target.value == ""){
         this.limite = this.collegues.length

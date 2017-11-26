@@ -24,24 +24,15 @@ export class CollegueService {
         return cols.map(col => this.collegues.push(new Collegue(col.pseudo, col.url, col.score))
         )})
         this.subject.next(this.collegues)
-      return this.subject.asObservable();
-      
-    /*return  this.http.get<any>(`${url_server}`).toPromise().then(cols => {
-      return cols.map(col => new Collegue(col.pseudo, col.url, col.score))
-    })*/
+      return this.subject;
 
     }
     sauvegarder(newCollegue:Collegue):Observable<Collegue[]> {
     // TODO sauvegarder le nouveau collègue
-   
-
       let data = {"pseudo":newCollegue.nom,"url":newCollegue.url}
-      this.http.post<Collegue>(`${url_server}/ajouter`,data,httpOptions)
-      //this.collegues.push(newCollegue)
+      this.http.post<Collegue>(`${url_server}/ajouter`,data,httpOptions).toPromise()
       this.subject.next(this.collegues)
       return this.subject.asObservable();
-      //return this.http.post<Collegue>(`${url_server}/ajouter`,data,httpOptions).toPromise()
-
   }
     aimerUnCollegue(collegue:Collegue):Promise<Collegue> {
 

@@ -1,8 +1,8 @@
 <!--The content below is only a placeholder and can be replaced.-->
 <div style="background-color: gainsboro">
     <div style="text-align:right">
-        <button *ngIf="etat" >En ligne</button>
-        <button *ngIf="!etat" >Hors ligne</button>
+      <span *ngIf="etat" class="badge badge-success">En ligne</span>
+      <span *ngIf="!etat" class="badge badge-danger">Hors ligne</span>
       </div>
 <div style="text-align:center">
   <h1>

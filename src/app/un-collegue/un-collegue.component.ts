@@ -10,11 +10,11 @@ import {StateService} from '../shared/status-server/state.service'
 })
 export class UnCollegueComponent implements OnInit {
 
-  etat:boolean;
+  //etat:boolean = false
 
   @Input() collegue:Collegue;
-  constructor(private collegueService:CollegueService,private statusService:StateService) {
-    this.statusService.state().subscribe(val => this.etat = val)
+  constructor(private collegueService:CollegueService){//,private statusService:StateService) {
+    //this.statusService.state().subscribe(val => this.etat = val)
     
   }
 
