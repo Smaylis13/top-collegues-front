@@ -1,4 +1,7 @@
 # TopCollegues
+Compiler avec la version npm : 
+$ npm -v
+6.14.18
 
 ## Clever Cloud
 (https://dist-eelxbearzs.now.sh) ==> Clever Cloud
